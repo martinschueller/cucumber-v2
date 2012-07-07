@@ -11,5 +11,5 @@ define([ 'jquery', 'underscore', 'backbone' ], function($, _, Backbone) {
 			return this;
 		}
 	});
-	return new storiesSingleView;
+	return storiesSingleView;
 });

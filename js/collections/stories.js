@@ -18,10 +18,10 @@ define([
         return "http://cucumber.iaep.de/snacks/";
       },
       parse : function(data) {
-    	  console.log("stories data recieved! This is how it looks like: " + data.results);
+    	  console.log("stories data recieved! This is how it looks like: " + data);
     	    // need to return
     	    // the root of the response.
-    	    return data.results;
+    	    return data;
     	  }
   });
 
