@@ -4,10 +4,9 @@ define([ 'jquery', 'underscore', 'backbone' ], function($, _, Backbone) {
 		tagName : "li",
 		className : "story",
 		render : function() {
-
 			// just render the tweet text as the content of this element.
-			//$(this.el).html(this.model.get("text"));
-			$(this.el).html("TEST");
+			$(this.el).html(this.model.get("stuff"));
+			//$(this.el).html("TEST");
 			return this;
 		}
 	});

@@ -4,12 +4,10 @@ define(
 		  
 		  // Pull in the Collection module from above
 		  'collections/stories',
-		  'models/story',
 		  'views/stories/single',
 		  'text!templates/stories/list.html'
 		  ], function($, _, Backbone,
 				storiesCollection,
-				storyModel,
 				storiesSingleView,
 				storiesListTemplate) {
 			
@@ -22,7 +20,7 @@ define(
 					//goes through each story and adds a storySingleView for it
 					this.collection.each(function(story) {
 						
-					      var singleView = new storiesSingleView({ model : storyModel });
+					      var singleView = new storiesSingleView({ model : story });
 					      $(this.el).prepend(singleView.render().el);
 					    }, this);
 				    
