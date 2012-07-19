@@ -15,7 +15,7 @@ define([ 'jquery', 'underscore', 'backbone', 'models/recipe', 'models/story',
 		},
 
 		initialize : function() {
-			this.model.fetch();
+			this.model.fetch({ data: { id: 1} });
 		},
 
 		save : function() {
@@ -50,6 +50,7 @@ define([ 'jquery', 'underscore', 'backbone', 'models/recipe', 'models/story',
 				recipe : this.model,
 				_ : _
 			};
+			console.log("this is the stuff coming from the recipe model: " + this.model.get("template"));
 			var compiledTemplate = _.template(storiesRecipeTemplate, data);
 			$("#page").html(compiledTemplate);
 		}

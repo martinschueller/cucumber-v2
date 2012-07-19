@@ -11,9 +11,15 @@ define([
         return "http://cucumber.iaep.de/recipes/";
       },
     initialize: function(){
-    }
+    },
+      parse : function(data) {
+    	  console.log("recipe data recieved! This is how it looks like: " + data);
+    	    // need to return
+    	    // the root of the response.
+    	    return data;
+    	  }
 
   });
-  return recipeModel;
+  return new recipeModel;
 
 });
