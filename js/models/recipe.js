@@ -3,9 +3,13 @@ define([
   'backbone'
 ], function(_, Backbone) {
   var recipeModel = Backbone.Model.extend({
-    defaults: {
-      score: 10
+    
+
+	  defaults: {
     },
+    url : function() {
+        return "http://cucumber.iaep.de/recipes/";
+      },
     initialize: function(){
     }
 

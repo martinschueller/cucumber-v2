@@ -16,6 +16,7 @@ define(
 				tagName : "ul",
 				className : "stories",
 				render : function() {
+					console.log("rendering story list view");
 					this.collection = storiesCollection;
 					//goes through each story and adds a storySingleView for it
 					this.collection.each(function(story) {

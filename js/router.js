@@ -1,8 +1,8 @@
 // Filename: router.js
 define([ 'jquery', 'underscore', 'backbone', 'views/home/main',
 		'views/projects/list', 'views/users/list', 'views/stories/list', 'collections/stories',
-		'views/stories/single' ], function($, _, Backbone, mainHomeView,
-		projectListView, userListView, storiesListView, storiesCollection, storiesSingleView) {
+		'views/stories/single', 'views/stories/recipe' ], function($, _, Backbone, mainHomeView,
+		projectListView, userListView, storiesListView, storiesCollection, storiesSingleView, storyRecipeView) {
 	var AppRouter = Backbone.Router.extend({
 		routes : {
 			// Define some URL routes
@@ -10,6 +10,7 @@ define([ 'jquery', 'underscore', 'backbone', 'views/home/main',
 			'users' : 'showUsers',
 			'stories' : 'showStories',
 			'story' : 'showStory',
+			'recipe' : 'showRecipe',
 
 			// Default
 			'*actions' : 'defaultAction'
@@ -39,6 +40,10 @@ define([ 'jquery', 'underscore', 'backbone', 'views/home/main',
 
 		showStory : function() {
 			storiesSingleView.render();
+		},
+		showRecipe : function() {
+			console.log("going to render recipe");
+			storyRecipeView.render();
 		},
 
 		defaultAction : function(actions) {
