@@ -30,7 +30,7 @@ define([ 'jquery', 'underscore', 'backbone', 'views/home/main',
 			storiesCollection.fetch({
 				  success : function(collection) {
 					  console.log("fetch was succesfull");
-				    $('body').html(storiesListView.render().el);
+				    storiesListView.render();
 				  },
 			error : function(error) {
 				console.log(error);

@@ -11,7 +11,7 @@ define([ 'jquery', 'underscore', 'backbone',
 		tagName : "li",
 		className : "story",
 		thumb : true,
-		
+		compiledTemplate : "",
 		initialize: function(options) {
 	        if(options.thumb) {
 	            thumb = options.thumb;
@@ -28,20 +28,24 @@ define([ 'jquery', 'underscore', 'backbone',
 			
 			if (this.options.thumb)
 				{
-				var compiledTemplate = _.template(storyThumbTemplate, data);
-				$(this.el).html(compiledTemplate);
 				
+				compiledTemplate = _.template(storyThumbTemplate, data);
+				//$(this.el).html(compiledTemplate);
+				console.log("rendering thumb view and this is the generated html: " + compiledTemplate);
+				return compiledTemplate;
 				}
 			
 			else
 				{
 				var compiledTemplate = _.template(storySingleTemplate, data);
 				$("#page").prepend(compiledTemplate);
+				//$(this.el).prepend(compiledTemplate);
 			//$(this.el).html(this.model.get("stuff"));
 			//$(this.el).html("TEST");
+				return this;
 				}
 			
-			return this;
+			
 		}
 	});
 	return storiesSingleView;
