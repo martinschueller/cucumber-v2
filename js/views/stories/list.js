@@ -14,6 +14,7 @@ define(
 			
 			var storiesListView = Backbone.View.extend({
 				render : function() {
+					$("#page").html("");
 					console.log("rendering story list view");
 					this.collection = storiesCollection;
 					//goes through each story and adds a storySingleView for it

@@ -45,6 +45,7 @@ define([ 'jquery', 'underscore', 'backbone', 'models/recipe', 'models/story',
 			return false;
 		},
 		render : function() {
+			$("#page").html("");
 			console.log("rendering template");
 			var data = {
 				recipe : this.model,
