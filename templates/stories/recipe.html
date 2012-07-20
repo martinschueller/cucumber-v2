@@ -1,7 +1,9 @@
+ <form>
   <% _.each(eval("(" + recipe.get("template")+ ")"), function(field){ %>
-   <li><%= field.input.id %></li> 
+   
+   <input type="text" name="<%= field.input.name %>" value="<%= field.input.placeholder %>" />
+
   <% }); %>
-  <form>
-Username: <input type="text" name="user" />
+
 <input type="submit" value="Submit" />
 </form> 
