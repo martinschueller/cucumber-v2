@@ -10,26 +10,27 @@ define([ 'jquery', 'underscore', 'backbone', 'models/recipe', 'models/story',
 		model : recipeModel,
 		tagName : "ul",
 		className : "stories",
+		el : "#page",
 		events : {
-			"submit form" : "save"
+			"submit" : "save"
 		},
 
 		initialize : function() {
+			_.bindAll(this, 'save');
 			this.model.fetch({ data: { id: 1} });
 		},
 
 		save : function() {
+			console.log("sunbmitting...")
+			
 			var self = this;
 			var msg = this.model.isNew() ? 'Successfully created!' : "Saved!";
-
-			storyModel.save({
+			var story = new storyModel();
+			story.save({
 				//title : this.$('[name=title]').val(),
 				//body : this.$('[name=body]').val()
 			}, {
 				success : function(model, resp) {
-					new App.Views.Notice({
-						message : msg
-					});
 
 					// self.model = model;
 					self.render();
@@ -38,14 +39,14 @@ define([ 'jquery', 'underscore', 'backbone', 'models/recipe', 'models/story',
 					Backbone.history.saveLocation('documents/' + model.id);
 				},
 				error : function() {
-					new App.Views.Error();
+					console.log("didnt save, get you f** code right!");
 				}
 			});
 
 			return false;
 		},
 		render : function() {
-			$("#page").html("");
+			
 			console.log("rendering template");
 			var data = {
 				recipe : this.model,
@@ -53,7 +54,7 @@ define([ 'jquery', 'underscore', 'backbone', 'models/recipe', 'models/story',
 			};
 			console.log("this is the stuff coming from the recipe model: " + this.model.get("template"));
 			var compiledTemplate = _.template(storiesRecipeTemplate, data);
-			$("#page").html(compiledTemplate);
+			$(this.el).html(compiledTemplate);
 		}
 
 	});

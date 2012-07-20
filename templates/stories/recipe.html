@@ -1,3 +1,7 @@
   <% _.each(eval("(" + recipe.get("template")+ ")"), function(field){ %>
    <li><%= field.input.id %></li> 
   <% }); %>
+  <form>
+Username: <input type="text" name="user" />
+<input type="submit" value="Submit" />
+</form> 
