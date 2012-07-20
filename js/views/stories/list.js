@@ -13,7 +13,7 @@ define(
 			
 			
 			var storiesListView = Backbone.View.extend({
-				tagName : "ul",
+				//tagName : "ul",
 				className : "stories",
 				render : function() {
 					console.log("rendering story list view");
@@ -21,8 +21,9 @@ define(
 					//goes through each story and adds a storySingleView for it
 					this.collection.each(function(story) {
 						
-					      var singleView = new storiesSingleView({ model : story });
+					      var singleView = new storiesSingleView({ model : story , thumb : true});
 					      $(this.el).prepend(singleView.render().el);
+					      //singleView.render();
 					    }, this);
 				    
 				 // var data = {};
