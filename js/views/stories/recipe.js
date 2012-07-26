@@ -16,8 +16,7 @@ define([ 'jquery', 'underscore', 'backbone', 'models/recipe', 'models/story',
 		},
 
 		initialize : function() {
-			_.bindAll(this, 'save');
-			this.model.fetch({ data: { id: 1} });
+			
 		},
 
 		save : function() {

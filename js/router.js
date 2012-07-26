@@ -32,8 +32,18 @@ define([ 'jquery', 'underscore', 'backbone', 'views/home/main',
 			storiesSingleView.render();
 		},
 		showRecipe : function() {
-			console.log("going to render recipe");
-			storyRecipeView.render();
+			storyRecipeView.model.fetch({
+					data: { id: 1} ,
+					success: function() {
+						console.log("going to render recipe");
+						storyRecipeView.render();
+					  },
+					  error : function(error) {
+					console.log(error);
+					}
+			
+			});
+			
 		},
 
 		defaultAction : function(actions) {
