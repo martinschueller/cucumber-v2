@@ -10,6 +10,6 @@ define([
 	  model: menuItemModel,
   });
 
-  return menuListCollection;
+  return new menuListCollection;
   
 });
