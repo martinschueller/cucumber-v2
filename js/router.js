@@ -56,7 +56,7 @@ define([ 'jquery', 'underscore', 'backbone', 'views/home/main',
 	var initialize = function() {
 		var app_router = new AppRouter;
 		Backbone.history.start();
-		recipeMenuView.render();
+		//recipeMenuView.render();
 	};
 	return {
 		initialize : initialize

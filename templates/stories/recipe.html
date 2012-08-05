@@ -1,4 +1,4 @@
- <form>
+ <form id="recipe">
   <% _.each(eval("(" + recipe.get("template")+ ")"), function(field){ %>
    
    <input type="text" name="<%= field.input.name %>" value="<%= field.input.placeholder %>" />

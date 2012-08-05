@@ -20,24 +20,28 @@ define([ 'jquery', 'underscore', 'backbone', 'models/recipe', 'models/story',
 		},
 
 		save : function() {
-			console.log("sunbmitting...")
+			//console.log("sunbmitting...")
 			
 			var self = this;
 			var msg = this.model.isNew() ? 'Successfully created!' : "Saved!";
 			var story = new storyModel();
 			story.save({
-				//title : this.$('[name=title]').val(),
-				//body : this.$('[name=body]').val()
+				//content : this.$('[name=title]').val()
+				//story :  JSON.stringify(this.$('#recipe :input')),
+				story :  JSON.stringify(self.getFormData()),
+				recipe_id : "1"
 			}, {
 				success : function(model, resp) {
 
 					// self.model = model;
 					self.render();
+					console.log("Ich bin das neue model: " + JSON.stringify(model));
 					// self.delegateEvents();
 
-					Backbone.history.saveLocation('documents/' + model.id);
+					//Backbone.history.saveLocation('documents/' + model.id);
 				},
-				error : function() {
+				error: function(model, response) {
+		            console.log('error! ' + JSON.stringify(response));
 					console.log("didnt save, get you f** code right!");
 				}
 			});
@@ -46,14 +50,24 @@ define([ 'jquery', 'underscore', 'backbone', 'models/recipe', 'models/story',
 		},
 		render : function() {
 			
-			console.log("rendering template");
+			//console.log("rendering template");
 			var data = {
 				recipe : this.model,
 				_ : _
 			};
-			console.log("this is the stuff coming from the recipe model: " + this.model.get("template"));
+			//console.log("this is the stuff coming from the recipe model: " + this.model.get("template"));
 			var compiledTemplate = _.template(storiesRecipeTemplate, data);
 			$(this.el).html(compiledTemplate);
+		},
+		
+		getFormData : function() {
+			console.log("trying to get form data");
+			var values = {};
+			$.each($('#recipe').serializeArray(), function(i, field) {
+				values[field.name] = field.value;
+			});
+			console.log("this is the stuff going to be saved: "+ values);
+			return values;			
 		}
 
 	});

@@ -1,12 +1,14 @@
 define([
   'jquery',
   'underscore',
-  'backbone'
-], function($, _, Backbone){
+  'backbone',
+  'collections/spices',
+  'models/spice'
+], function($, _, Backbone, spicesCollection, spiceModel){
 	var storyModel = Backbone.Model.extend({
 		
-	     url : function() {
-	          return "http://cucumber.iaep.de/snacks/";
+	    url : function() {
+	          return "http://cucumber.iaep.de/stories";
 	        },
 
 	    defaults: function() {
@@ -19,7 +21,13 @@ define([
 		      //if (!this.get("title")) {
 		        //this.set({"stuff": this.defaults.title});
 		      //}
-		}
+		},
+		
+	    addSpice: function () {
+	    	
+	    	
+	    	
+	    }
 		
 		
 	});

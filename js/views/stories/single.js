@@ -19,7 +19,6 @@ define([ 'jquery', 'underscore', 'backbone',
 	    },
 
 		render : function() {
-			// just render the tweet text as the content of this element.
 			var data = {
 					story : this.model,
 					_ : _
