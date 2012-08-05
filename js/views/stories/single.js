@@ -1,15 +1,16 @@
 // Filename: views/stories/single
-define([ 'jquery', 'underscore', 'backbone',
+define([ 'jquery', 'underscore', 'backbone', 'models/story',
       // Using the Require.js text! plugin, we are loaded raw text
       // which will be used as our views primary template
       'text!templates/stories/storyThumb.html',
       'text!templates/stories/single.html'
          
          
-         ], function($, _, Backbone, storyThumbTemplate, storySingleTemplate) {
+         ], function($, _, Backbone, storyModel, storyThumbTemplate, storySingleTemplate) {
 	var storiesSingleView = Backbone.View.extend({
 		tagName : "li",
 		className : "story",
+		model : storyModel,
 		thumb : true,
 		compiledTemplate : "",
 		initialize: function(options) {
@@ -30,7 +31,7 @@ define([ 'jquery', 'underscore', 'backbone',
 				
 				compiledTemplate = _.template(storyThumbTemplate, data);
 				//$(this.el).html(compiledTemplate);
-				console.log("rendering thumb view and this is the generated html: " + compiledTemplate);
+				//console.log("rendering thumb view and this is the generated html: " + compiledTemplate);
 				return compiledTemplate;
 				}
 			

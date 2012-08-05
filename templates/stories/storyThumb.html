@@ -1,1 +1,7 @@
-<%= story.get("stuff") %>
+ <div id="storyThumb">
+  <% _.each(eval("(" + story.get("story")+ ")"), function(field){ %>
+  	
+<p> <%= field %> </p>
+
+<% }); %>
+</div> 

@@ -15,7 +15,8 @@ define([
 
       },
       url : function() {
-        return "http://cucumber.iaep.de/snacks/";
+        //return "http://cucumber.iaep.de/snacks/";
+    	  return "http://cucumber.iaep.de/stories/";
       },
       parse : function(data) {
     	  console.log("stories data recieved! This is how it looks like: " + data);
