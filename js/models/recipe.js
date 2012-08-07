@@ -20,6 +20,6 @@ define([
     	  }
 
   });
-  return new recipeModel;
+  return recipeModel;
 
 });

@@ -45,7 +45,7 @@ define([ 'jquery', 'underscore', 'backbone', 'views/home/main',
 		},
 		showRecipe : function() {
 			storyRecipeView.model.fetch({
-					data: { id: 1} ,
+					data: { id: 2} ,
 					success: function() {
 						console.log("going to render recipe");
 						storyRecipeView.render();
@@ -61,13 +61,23 @@ define([ 'jquery', 'underscore', 'backbone', 'views/home/main',
 		defaultAction : function(actions) {
 			// We have no matching route, lets display the home page
 			mainHomeView.render();
+			recipeMenuView.collection.fetch({
+				success: function() {
+					console.log("going to render recipeMenu");
+					recipeMenuView.render();
+				  },
+				  error : function(error) {
+				console.log(error);
+				}
+		
+		});
 		}
 	});
 
 	var initialize = function() {
 		var app_router = new AppRouter;
 		Backbone.history.start();
-		//recipeMenuView.render();
+		
 	};
 	return {
 		initialize : initialize

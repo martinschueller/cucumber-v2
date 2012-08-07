@@ -25,7 +25,7 @@ define(
 					      var singleView = new StoriesSingleView({ model : story , thumb : true});
 					      $(this.el).prepend(singleView.render());
 					      //$(this.el).prepend(singleView.render());
-					      console.log("how does it look like in a story? " + singleView.render());
+					      //console.log("how does it look like in a story? " + singleView.render());
 					      //singleView.render();
 					    }, this);
 				    
