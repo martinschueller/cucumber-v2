@@ -7,19 +7,30 @@ define([ 'jquery', 'underscore', 'backbone', 'models/story',
          
          
          ], function($, _, Backbone, storyModel, storyThumbTemplate, storySingleTemplate) {
-	var storiesSingleView = Backbone.View.extend({
+	var StoriesSingleView = Backbone.View.extend({
 		tagName : "li",
 		className : "story",
+		el: "#page",
 		model : storyModel,
 		thumb : true,
 		compiledTemplate : "",
 		initialize: function(options) {
+			console.log("story view created as. Is it a thumbnail: " + options.thumb);
 	        if(options.thumb) {
 	            thumb = options.thumb;
 	        }
+	        
+	        if(options.id)
+	        	{
+	        	
+	        	this.model = new storyModel({id : options.id});
+	        	
+	        	}
+	        
 	    },
 
 		render : function() {
+			console.log("Ich bin das neue Story model: " + JSON.stringify(this.model));
 			var data = {
 					story : this.model,
 					_ : _
@@ -38,15 +49,12 @@ define([ 'jquery', 'underscore', 'backbone', 'models/story',
 			else
 				{
 				var compiledTemplate = _.template(storySingleTemplate, data);
-				$("#page").prepend(compiledTemplate);
-				//$(this.el).prepend(compiledTemplate);
-			//$(this.el).html(this.model.get("stuff"));
-			//$(this.el).html("TEST");
+				$(this.el).html(compiledTemplate);
 				return this;
 				}
 			
 			
 		}
 	});
-	return storiesSingleView;
+	return StoriesSingleView;
 });

@@ -1,3 +1,9 @@
-<ul>
-ich bin das story template
-</ul>
+ <div id="storyThumb">
+  <% _.each(eval("(" + story.get("story")+ ")"), function(field){ %>
+  	
+<p> <%= field %> </p>
+
+
+<% }); %>
+<p> <%= story.get("id") %> </p>
+</div> 

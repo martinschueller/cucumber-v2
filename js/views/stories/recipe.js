@@ -1,4 +1,4 @@
-// Filename: views/stories/new
+// Filename: views/stories/recipe
 define([ 'jquery', 'underscore', 'backbone', 'models/recipe', 'models/story',
 // Using the Require.js text! plugin, we are loaded raw text
 // which will be used as our views primary template

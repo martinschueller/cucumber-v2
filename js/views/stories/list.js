@@ -8,7 +8,7 @@ define(
 		  'text!templates/stories/list.html'
 		  ], function($, _, Backbone,
 				storiesCollection,
-				storiesSingleView,
+				StoriesSingleView,
 				storiesListTemplate) {
 			
 			
@@ -22,7 +22,7 @@ define(
 					//goes through each story and adds a storySingleView for it
 					this.collection.each(function(story) {
 						
-					      var singleView = new storiesSingleView({ model : story , thumb : true});
+					      var singleView = new StoriesSingleView({ model : story , thumb : true});
 					      $(this.el).prepend(singleView.render());
 					      //$(this.el).prepend(singleView.render());
 					      console.log("how does it look like in a story? " + singleView.render());

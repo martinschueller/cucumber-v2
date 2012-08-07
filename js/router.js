@@ -2,15 +2,15 @@
 define([ 'jquery', 'underscore', 'backbone', 'views/home/main',
 		 'views/stories/list', 'collections/stories',
 		'views/stories/single', 'views/stories/recipe','views/navigation/recipeMenu' ], function($, _, Backbone, mainHomeView,
-		 storiesListView, storiesCollection, storiesSingleView, storyRecipeView, recipeMenuView) {
+		 storiesListView, storiesCollection, StoriesSingleView, storyRecipeView, recipeMenuView) {
 	var AppRouter = Backbone.Router.extend({
 		routes : {
 			
 			// Define some URL routes
 			'stories' : 'showStories',
-			'story' : 'showStory',
+			'story/:id' : 'showStory',
 			'recipe' : 'showRecipe',
-
+			
 			// Default
 			'*actions' : 'defaultAction'
 		},
@@ -29,8 +29,19 @@ define([ 'jquery', 'underscore', 'backbone', 'views/home/main',
 				});
 		},
 
-		showStory : function() {
-			storiesSingleView.render();
+		showStory : function(id) {
+			//storiesSingleView.render();
+			var storiesSingleView = new StoriesSingleView({thumb : false, id: id})
+			storiesSingleView.model.fetch({
+				success: function() {
+					console.log("going to render story" + id);
+					storiesSingleView.render();
+				  },
+				  error : function(error) {
+				console.log("WTF are you DOING?! " + error);
+				}
+		
+		});
 		},
 		showRecipe : function() {
 			storyRecipeView.model.fetch({

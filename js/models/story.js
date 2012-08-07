@@ -7,9 +7,15 @@ define([
 ], function($, _, Backbone, spicesCollection, spiceModel){
 	var storyModel = Backbone.Model.extend({
 		
-	    url : function() {
-	          return "http://cucumber.iaep.de/stories";
-	        },
+	    urlRoot : "http://cucumber.iaep.de/stories",
+//		function() {
+//	        if (this.isNew()){
+//	            return "http://cucumber.iaep.de/stories";
+//	          } else {
+//	            return "http://cucumber.iaep.de/stories/" + this.id;
+//	          }
+//	        
+//	        },
 
 	    defaults: function() {
 	      return {
