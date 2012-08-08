@@ -1,15 +1,15 @@
 // Filename: router.js
 define([ 'jquery', 'underscore', 'backbone', 'views/home/main',
 		 'views/stories/list', 'collections/stories',
-		'views/stories/single', 'views/stories/recipe','views/navigation/recipeMenu' ], function($, _, Backbone, mainHomeView,
-		 storiesListView, storiesCollection, StoriesSingleView, storyRecipeView, recipeMenuView) {
+		'views/stories/single', 'views/stories/recipe','views/navigation/recipeMenu', 'views/pages/cookbook'], function($, _, Backbone, mainHomeView,
+		 storiesListView, storiesCollection, StoriesSingleView, storyRecipeView, recipeMenuView, cookbookView) {
 	var AppRouter = Backbone.Router.extend({
 		routes : {
 			
 			// Define some URL routes
 			'stories' : 'showStories',
 			'story/:id' : 'showStory',
-			'recipe' : 'showRecipe',
+			'recipe/:id' : 'showRecipe',
 			
 			// Default
 			'*actions' : 'defaultAction'
@@ -43,9 +43,9 @@ define([ 'jquery', 'underscore', 'backbone', 'views/home/main',
 		
 		});
 		},
-		showRecipe : function() {
+		showRecipe : function(id) {
 			storyRecipeView.model.fetch({
-					data: { id: 2} ,
+					data: { id: id} ,
 					success: function() {
 						console.log("going to render recipe");
 						storyRecipeView.render();
@@ -61,16 +61,7 @@ define([ 'jquery', 'underscore', 'backbone', 'views/home/main',
 		defaultAction : function(actions) {
 			// We have no matching route, lets display the home page
 			mainHomeView.render();
-			recipeMenuView.collection.fetch({
-				success: function() {
-					console.log("going to render recipeMenu");
-					recipeMenuView.render();
-				  },
-				  error : function(error) {
-				console.log(error);
-				}
-		
-		});
+			cookbookView.render();
 		}
 	});
 

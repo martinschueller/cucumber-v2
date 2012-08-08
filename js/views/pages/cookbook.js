@@ -3,27 +3,51 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'collections/menuList',
-  'text!templates/navigation/recipeMenu.html'
-], function($, _, Backbone, menuListCollection, recipeMenuTemplate){
+  'views/navigation/recipeMenu',
+  "views/stories/list",
+  'text!templates/pages/cookbook.html'
+  
+], function($, _, Backbone, recipeMenuView, storiesListView, cookbookTemplate){
 
-  var recipeMenuView = Backbone.View.extend({
+  var cookbookView = Backbone.View.extend({
     el: $("#page"),
 	initialize : function() {
 		//
 		
 	},
     render: function(){
+    	storiesListView.collection.fetch({
+			  success : function(collection) {
+				  console.log("fetch was succesfull");
+				  $('#preview').html(storiesListView.compileTemplate());
+		},
+		error : function(error) {
+			console.log(error);
+			}
+			});
+    	recipeMenuView.collection.fetch({
+    		success: function() {
+    			console.log("going to render recipeMenu");
+    			//recipeMenuView.compileTemplate();
+    			$('#recipe').html(recipeMenuView.compileTemplate());
+    		  },
+    		  error : function(error) {
+    		console.log(error);
+    		}
+    	});
     	
-    	recipeMenuView.render();
+    	
+    	
     	
     	var data = {
-				menuList : this.collection,
 				_ : _
 			};
-			var compiledTemplate = _.template(recipeMenuTemplate, data);
+			var compiledTemplate = _.template(cookbookTemplate, data);
 			$(this.el).html(compiledTemplate);
     }
+	
+	
+	
   });
-  return new recipeMenuView;
+  return new cookbookView;
 });

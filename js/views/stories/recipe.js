@@ -16,7 +16,7 @@ define([ 'jquery', 'underscore', 'backbone', 'models/recipe', 'models/story',
 		},
 
 		initialize : function() {
-			
+			this.model = new recipeModel();
 		},
 
 		save : function() {
@@ -51,13 +51,19 @@ define([ 'jquery', 'underscore', 'backbone', 'models/recipe', 'models/story',
 		render : function() {
 			
 			//console.log("rendering template");
+			
+			$(this.el).html(this.compileTemplate());
+		},
+		
+		compileTemplate : function() {
 			var data = {
-				recipe : this.model,
-				_ : _
-			};
-			//console.log("this is the stuff coming from the recipe model: " + this.model.get("template"));
-			var compiledTemplate = _.template(storiesRecipeTemplate, data);
-			$(this.el).html(compiledTemplate);
+					recipe : this.model,
+					_ : _
+				};
+				//console.log("this is the stuff coming from the recipe model: " + this.model.get("template"));
+				var compiledTemplate = _.template(storiesRecipeTemplate, data);
+				return compiledTemplate;
+			
 		},
 		
 		getFormData : function() {

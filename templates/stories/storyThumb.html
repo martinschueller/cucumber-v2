@@ -1,9 +1,10 @@
  <div id="storyThumb">
+ 	<p> <a href="index.html#/story/<%= story.get("id") %>"> <%= story.get("id") %></a> </p>
   <% _.each(eval("(" + story.get("story")+ ")"), function(field){ %>
   	
 <p> <%= field %> </p>
 
 
 <% }); %>
-<p> <%= story.get("id") %> </p>
-</div> 
+
+</div>

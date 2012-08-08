@@ -1,5 +1,11 @@
-<ul>
-  <% menuList.each(function(item){ %>
-   <%= item.get("name") %>
+<div class="title"><ul><li><h1>tell a story...</h1></li></ul></div>
+			
+<ul id="recipeMenu">
+
+<% menuList.each(function(item){ %>
+   <li>
+   	<h2><a href="index.html#/recipe/<%= item.get("id") %>"><%= item.get("name") %></a></h2>
+this is the recipe explanation   	</li>
+   
   <% }); %>
 </ul>

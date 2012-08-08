@@ -1,4 +1,4 @@
-// Filename: views/home/main
+// Filename: views/home/recipeMenu
 define([
   'jquery',
   'underscore',
@@ -12,16 +12,25 @@ define([
     collection : menuListCollection,
 	initialize : function() {
 
+		
 	},
     render: function(){
     	console.log("this is the collection, dont know why I still need to tell you this?! : " + JSON.stringify(this.collection));
+
+			$(this.el).html(this.compileTemplate());
+    },
+    
+    compileTemplate : function(){
+    	
     	var data = {
 				menuList : this.collection,
 				_ : _
 			};
 			var compiledTemplate = _.template(recipeMenuTemplate, data);
-			$(this.el).html(compiledTemplate);
+			return compiledTemplate;
+    	
     }
+    
   });
   return new recipeMenuView;
 });
